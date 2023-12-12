@@ -1,8 +1,27 @@
+const itemService = require('../services/itemServices')
+
 const shopControllers = {
-    shop: (req, res) => res.send('Route for Shop View'),
-    one_item: (req, res) => res.send('Route for Item View'),
-    add_item: (req, res) => res.send('Route for Add Item View'),
-    cart: (req, res) => res.send('Route for Cart View'),
+    shop: async (req, res) => {
+        const items = await itemService.getAllItems();
+        const { data } = items;
+        res.render('shop/shop', {
+            title: 'Item | Funkoshop',
+            items: data
+        });
+    },
+
+    one_item: async (req, res) => {
+        const id = req.params.id;
+        const item = await itemService.getOneItem(id);
+        const { data } = item;
+        res.render('shop/item', {
+            title: 'Item | Funkoshop',
+            item: {...data}
+        });
+    },
+
+    add_item: (req, res) => res.render('admin/create', { title: 'Create | Funkoshop'}),
+    cart: (req, res) => res.render('shop/cart', { title: 'Cart | Funkoshop'}),
     cart_post: (req, res) => res.send('Route for Shop View')
 };
 

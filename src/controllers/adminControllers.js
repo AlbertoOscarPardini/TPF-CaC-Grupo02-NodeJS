@@ -1,10 +1,44 @@
+const itemServices = require('../services/itemServices')
+
 const adminControllers = {
-    admin: (req, res) => res.send('Rout for Admin View'),
-    create: (req, res) => res.send('Rout for Create a item View'),
-    create_post: (req, res) => res.send('Rout for Send a New Item'),
-    edit: (req, res) => res.send('Rout for Get a Item with ID View'),
-    edit_put: (req, res) => res.send('Rout for Edit a item'),
-    delete: (req, res) => res.send('Rout for delete a Item with ID from database')
+    admin: async (req, res) => {
+        const { data } = await itemServices.getAllItems();
+        res.render ('admin/admin', {
+            title: 'Admin | Funkoshop',
+            items: data
+        })
+    },
+
+    create: (req, res) => res.render('admin/create', { title: 'Create | Funkoshop'}),
+
+    create_post: async (req, res) => {
+        const item = req.body;
+        const files = req.files;
+        await itemServices.createItem(item, files);
+        res.redirect('/admin')
+    },
+
+    edit: async (req, res) => {
+        const id = req.params.id;
+        const { data } = await itemServices.getOneItem(id);
+        res.render('admin/edit', {
+            title: `Editar item # ${id}`,
+            item: data
+        })
+    },
+
+    edit_put: async (req, res) => {
+        const item = req.body;
+        const id = req.params.id;
+        await itemServices.editItem(item, id);
+        res.redirect('/admin');
+    },
+
+    delete: async (req, res) => {
+        const id = req.params.id;
+        await itemServices.deleteItem(id);
+        res.redirect('/admin');
+    }
 };
 
 module.exports = adminControllers;

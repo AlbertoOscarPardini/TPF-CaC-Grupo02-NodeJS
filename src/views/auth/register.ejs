@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+
+<main>
+    <section class="register container">
+    <h2 class="register__title">CREA TU CUENTA</h2>
+    <h3 class="register__subtitle">Completa el formulario para ser parte del mundo de los Funkos</h3>
+
+    <!--inicio de formulario-->
+    <form class="register__form" action="">
+
+      <div class="form__box--grid">
+        <label class="register__label" for="nombre">Nombre:</label>
+        <input type="text" name="nombre" placeholder="Jhon" id="" required />
+      </div>
+
+      <div class="form__box--grid">
+        <label class="register__label" for="apellido">Apellido:</label>
+        <input type="text" name="apellido" placeholder="Doe" id="" required/>
+      </div>
+      
+      <div class="form__box--grid">
+        <label class="register__label" for="email">Email:</label>
+        <input type="email" name="email" placeholder="johndoe@correo.com" id="" required />
+      </div>
+
+      <div class="form__box--grid">
+        <label class="register__label" for="contraseña">Contraseña:</label>
+        <input type="password" name="contraseña" pattern=".{6,}" id="" placeholder="●●●●●●●●●●●" required /> <!--la contraseña contiene 6 o mas caract-->
+      </div>
+
+      <div class="form__box--grid">
+        <label class="register__label" for="repita contraseña">Repita contraseña:</label>
+        <input type="password" name="repita contraseña" pattern=".{6,}" placeholder="●●●●●●●●●●●" id="" requiered />
+      </div>
+      <div class="register__form__submit">
+        <button class="form__submit--btn" type="submit">Registrar</button> <!--BOTON REGISTRAR-->
+        <div class="form__accept-conditions">
+          <!--TIENE LA OPCION DE ACEPTAR, ANTES ME LLEVA AL LINK DE TERMINOS Y CONDICIONES-->
+          <input type="checkbox" name="termsAndConds"> Acepto <a href="link" target="_blank" >Terminos y condiciones</a>
+        </div>
+      </div>
+      
+    </form> <!--FIN DEL FORMULARIO-->
+  </section>
+
+</main>
+
+<%- include('../partials/footer') %>

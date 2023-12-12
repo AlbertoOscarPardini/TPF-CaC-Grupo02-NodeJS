@@ -1,17 +1,18 @@
 {
   "name": "mission-4",
   "version": "1.0.0",
-  "description": "A simple shop",
-  "main": "app.js",
+  "description": "Iieda de Funkos",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "start":"node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "Nodejs",
     "Express"
   ],
-  "author": "Pancho",
-  "license": "ISC",
+  "author": "Comisión 23571 - Grupo 02",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",

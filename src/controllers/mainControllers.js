@@ -1,4 +1,4 @@
-const fs =require("fs");
+const fs = require("fs");
 const productosJson = JSON.parse(fs.readFileSync("./src/data/products.json","utf-8"));
 
 const mainControllers = {

@@ -20,13 +20,13 @@ const createItem = async (item, files) => {
     sku: item.sku,
     image_front: '../../img/' + files[0].filename,
     image_back: '../../img/' + files[1].filename,
+    licence_name: 'Star Wars',
     licence_id: item.collection
   }
   return await itemModel.createOne(itemSchema);
 }
 
 const editItem = async (item, id) => {
-  console.log('Llega a itemServices', item)
   const itemSchema = {
     product_name: item.name,
     product_description: item.description,
@@ -35,8 +35,9 @@ const editItem = async (item, id) => {
     stock: item.stock,
     discount: item.discount,
     sku: item.sku,
-    image_front: '/imagen_front',
-    image_back: '/imagen_front',
+    // image_front: '../../img/' + files[0].filename,
+    // image_back: '../../img/' + files[1].filename,
+    licence_name: item.licence,
     licence_id: item.collection
   }
   return await itemModel.editOne(itemSchema, {item_id: id});

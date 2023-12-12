@@ -62,9 +62,12 @@ const createOne = async (params) => {
 const editOne = async (params, id) => {
     try {
         const products = getAll().data;
-        const findItem = products.find(product => product.item_id == id)
-        findItem = params 
-        const edited = fs.writeFileSync(dataPath, JSON.stringify(products));
+        const id_req = id.item_id;
+        const findItem = products.find(product => product.item_id == id_req);
+        Object.keys(params).forEach(key => {
+            findItem[key] = params[key];
+        });
+        const edited = fs.writeFileSync(dataPath, JSON.stringify(products, null, 2));
         const response = {
             isError: false,
             item: edited

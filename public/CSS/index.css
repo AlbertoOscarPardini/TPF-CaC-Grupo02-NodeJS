@@ -1151,6 +1151,13 @@ textarea::placeholder {
     font-weight: 500;
 }
 
+.admin-table__row p:first-of-type {
+    white-space: nowarp;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 60px;
+}
+
 .admin-table__row a {
     font-size: var(--font-medium);
 }
@@ -1192,6 +1199,12 @@ textarea::placeholder {
     justify-content: center;
     align-items: stretch;
     gap: var(--spacing-36);
+}
+
+textarea#description {
+    padding: var(--spacing-20);
+    font-size: var(--font-small);
+    font-family: var(--base-font);
 }
 
 .edit__img {
